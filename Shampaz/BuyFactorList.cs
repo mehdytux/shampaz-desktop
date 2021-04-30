@@ -42,7 +42,8 @@ namespace Shampaz
             dgvFactors.Rows.Clear();
 
             var db = new shampazEntities();
-            var factorsQuery = db.BuyFactors.Where(x => x.Date >= pDateFrom.GeorgianDate && x.Date <= pDateTo.GeorgianDate);
+            var to = pDateTo.GeorgianDate + new TimeSpan(23, 59, 59);
+            var factorsQuery = db.BuyFactors.Where(x => x.Date >= pDateFrom.GeorgianDate && x.Date <= to);
             //MessageBox.Show(cmbStatus.SelectedValue.ToString());
             switch (cmbStatus.SelectedValue.ToString())
             {

@@ -32,6 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvFactors = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPaymentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.pDateFrom = new System.Windows.Forms.PersianDatePicker();
@@ -48,14 +56,6 @@
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.cmbStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPaymentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactors)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +93,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFactors.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFactors.EnableHeadersVisualStyles = false;
-            this.dgvFactors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvFactors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactors.Location = new System.Drawing.Point(12, 43);
             this.dgvFactors.Name = "dgvFactors";
             this.dgvFactors.ReadOnly = true;
@@ -110,6 +110,70 @@
             this.dgvFactors.Size = new System.Drawing.Size(1058, 351);
             this.dgvFactors.TabIndex = 0;
             this.dgvFactors.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgvFactors_SortCompare);
+            // 
+            // clnId
+            // 
+            this.clnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnId.HeaderText = "شناسه";
+            this.clnId.Name = "clnId";
+            this.clnId.ReadOnly = true;
+            this.clnId.Width = 75;
+            // 
+            // clnDate
+            // 
+            this.clnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnDate.HeaderText = "تاریخ";
+            this.clnDate.Name = "clnDate";
+            this.clnDate.ReadOnly = true;
+            this.clnDate.Width = 59;
+            // 
+            // clnPersonName
+            // 
+            this.clnPersonName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnPersonName.HeaderText = "شخص";
+            this.clnPersonName.Name = "clnPersonName";
+            this.clnPersonName.ReadOnly = true;
+            this.clnPersonName.Width = 70;
+            // 
+            // clnNumbers
+            // 
+            this.clnNumbers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnNumbers.HeaderText = "تعداد اقلام";
+            this.clnNumbers.Name = "clnNumbers";
+            this.clnNumbers.ReadOnly = true;
+            this.clnNumbers.Width = 88;
+            // 
+            // clnTotalPrice
+            // 
+            this.clnTotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnTotalPrice.HeaderText = "قیمت";
+            this.clnTotalPrice.Name = "clnTotalPrice";
+            this.clnTotalPrice.ReadOnly = true;
+            this.clnTotalPrice.Width = 63;
+            // 
+            // clnPaymentPrice
+            // 
+            this.clnPaymentPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnPaymentPrice.HeaderText = "پرداختی";
+            this.clnPaymentPrice.Name = "clnPaymentPrice";
+            this.clnPaymentPrice.ReadOnly = true;
+            this.clnPaymentPrice.Width = 78;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnStatus.HeaderText = "وضعیت";
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            this.clnStatus.Width = 71;
+            // 
+            // clnRemaining
+            // 
+            this.clnRemaining.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clnRemaining.HeaderText = "باقیمانده";
+            this.clnRemaining.Name = "clnRemaining";
+            this.clnRemaining.ReadOnly = true;
+            this.clnRemaining.Width = 80;
             // 
             // labelX1
             // 
@@ -335,70 +399,6 @@
             this.labelX6.TabIndex = 26;
             this.labelX6.Text = "وضعیت :";
             // 
-            // clnId
-            // 
-            this.clnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnId.HeaderText = "شناسه";
-            this.clnId.Name = "clnId";
-            this.clnId.ReadOnly = true;
-            this.clnId.Width = 75;
-            // 
-            // clnDate
-            // 
-            this.clnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnDate.HeaderText = "تاریخ";
-            this.clnDate.Name = "clnDate";
-            this.clnDate.ReadOnly = true;
-            this.clnDate.Width = 59;
-            // 
-            // clnPersonName
-            // 
-            this.clnPersonName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnPersonName.HeaderText = "شخص";
-            this.clnPersonName.Name = "clnPersonName";
-            this.clnPersonName.ReadOnly = true;
-            this.clnPersonName.Width = 70;
-            // 
-            // clnNumbers
-            // 
-            this.clnNumbers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnNumbers.HeaderText = "تعداد اقلام";
-            this.clnNumbers.Name = "clnNumbers";
-            this.clnNumbers.ReadOnly = true;
-            this.clnNumbers.Width = 88;
-            // 
-            // clnTotalPrice
-            // 
-            this.clnTotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnTotalPrice.HeaderText = "قیمت";
-            this.clnTotalPrice.Name = "clnTotalPrice";
-            this.clnTotalPrice.ReadOnly = true;
-            this.clnTotalPrice.Width = 63;
-            // 
-            // clnPaymentPrice
-            // 
-            this.clnPaymentPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnPaymentPrice.HeaderText = "پرداختی";
-            this.clnPaymentPrice.Name = "clnPaymentPrice";
-            this.clnPaymentPrice.ReadOnly = true;
-            this.clnPaymentPrice.Width = 78;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnStatus.HeaderText = "وضعیت";
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            this.clnStatus.Width = 71;
-            // 
-            // clnRemaining
-            // 
-            this.clnRemaining.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clnRemaining.HeaderText = "باقیمانده";
-            this.clnRemaining.Name = "clnRemaining";
-            this.clnRemaining.ReadOnly = true;
-            this.clnRemaining.Width = 80;
-            // 
             // BuyFactorList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -429,7 +429,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "لیست فاکتورها";
+            this.Text = "لیست فاکتورهای خرید";
             this.Load += new System.EventHandler(this.SellFactorList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactors)).EndInit();
             this.ResumeLayout(false);

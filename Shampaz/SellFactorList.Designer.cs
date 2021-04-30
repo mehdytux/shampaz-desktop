@@ -87,7 +87,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFactors.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFactors.EnableHeadersVisualStyles = false;
-            this.dgvFactors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvFactors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvFactors.Location = new System.Drawing.Point(12, 43);
             this.dgvFactors.Name = "dgvFactors";
             this.dgvFactors.ReadOnly = true;
@@ -377,7 +377,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "لیست فاکتورها";
+            this.Text = "لیست فاکتورهای فروش";
             this.Load += new System.EventHandler(this.SellFactorList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactors)).EndInit();
             this.ResumeLayout(false);

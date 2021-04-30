@@ -148,13 +148,22 @@ namespace Shampaz
         {
             var db = new shampazEntities();
 
+            decimal paymentPrice;
+            try
+            {
+                paymentPrice = Convert.ToDecimal(txtPayment.Text);
+            } catch
+            {
+                paymentPrice = 0;
+            }
+
             var factor = new BuyFactor
             {
-                Date = (DateTime)pdpDate.GeorgianDate,
+                Date = (DateTime)pdpDate.GeorgianDate + dtpTime.Value.TimeOfDay,
                 PersonId = SelectedPerson.Id,
                 TotalPrice = Convert.ToDecimal(txtTotalPrice.Text),
                 Description = txtDescription.Text,
-                PaymentPrice = Convert.ToDecimal(txtPayment.Text)
+                PaymentPrice = paymentPrice,
             };
 
             db.BuyFactors.Add(factor);
@@ -184,11 +193,19 @@ namespace Shampaz
         {
             var db = new shampazEntities();
             var factor = db.BuyFactors.Where(x => x.Id == EditedFactor.Id).FirstOrDefault();
-            factor.Date = (DateTime)pdpDate.GeorgianDate;
+            factor.Date = (DateTime)pdpDate.GeorgianDate + dtpTime.Value.TimeOfDay;
             factor.PersonId = SelectedPerson.Id;
             factor.TotalPrice = Convert.ToDecimal(txtTotalPrice.Text);
             factor.Description = txtDescription.Text;
-            factor.PaymentPrice = Convert.ToDecimal(txtPayment.Text);
+
+            try
+            {
+                factor.PaymentPrice = Convert.ToDecimal(txtPayment.Text);
+            }
+            catch
+            {
+                factor.PaymentPrice = 0;
+            }
 
             //MessageBox.Show(factor.Id.ToString());
             db.BuyFactorItems.RemoveRange(factor.BuyFactorItems);
