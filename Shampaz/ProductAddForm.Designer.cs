@@ -33,6 +33,8 @@
             this.txtPrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.lblPrice = new DevComponents.DotNetBar.LabelX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.txtProfit = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // lblName
@@ -91,21 +93,48 @@
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.Image = global::Shampaz.Properties.Resources.product_24;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(293, 87);
+            this.btnSave.Location = new System.Drawing.Point(320, 98);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(102, 36);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "ذخیره";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtProfit
+            // 
+            // 
+            // 
+            // 
+            this.txtProfit.Border.Class = "TextBoxBorder";
+            this.txtProfit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtProfit.Location = new System.Drawing.Point(12, 70);
+            this.txtProfit.Name = "txtProfit";
+            this.txtProfit.PreventEnterBeep = true;
+            this.txtProfit.Size = new System.Drawing.Size(302, 23);
+            this.txtProfit.TabIndex = 6;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(320, 69);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 5;
+            this.labelX1.Text = "سود :";
             // 
             // ProductAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 138);
+            this.Controls.Add(this.txtProfit);
+            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.lblPrice);
@@ -116,7 +145,10 @@
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProductAddForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "افزودن کالا";
+            this.Load += new System.EventHandler(this.ProductAddForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +160,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtPrice;
         private DevComponents.DotNetBar.LabelX lblPrice;
         private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtProfit;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

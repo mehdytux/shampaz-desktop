@@ -14,7 +14,6 @@ namespace Shampaz
     
     public partial class SellFactorItem
     {
-        public long Id { get; set; }
         public long ProductId { get; set; }
         public decimal Price { get; set; }
         public decimal TotalPrice { get; set; }
@@ -23,5 +22,6 @@ namespace Shampaz
         public long SellFactorId { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual SellFactor SellFactor { get; set; }
     }
 }

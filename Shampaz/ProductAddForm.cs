@@ -13,6 +13,9 @@ namespace Shampaz
 {
     public partial class ProductAddForm : DevComponents.DotNetBar.Office2007Form
     {
+        public int ProductId { get; set; }
+        public bool EditMode { get; set; }
+
         public ProductAddForm()
         {
             InitializeComponent();
@@ -42,17 +45,58 @@ namespace Shampaz
                 return;
             }
 
-            var db = new shampazEntities();
-            db.Products.Add(new Product
+            // Profit
+            decimal profit;
+            try
             {
-                Name = txtName.Text.Trim(),
-                Price = price
-            });
+                profit = Convert.ToDecimal(txtProfit.Text);
+            }
+            catch
+            {
+                profit = 0;
+            }
+
+            // save data
+            var db = new shampazEntities();
+
+            Product p;
+            if (EditMode)
+            {
+                p = db.Products.Where(x => x.Id == ProductId).FirstOrDefault();
+                p.Name = txtName.Text.Trim();
+                p.Price = price;
+                p.Profit = profit;
+
+                DesktopAlert.Show("محصول بروزرسانی شد", eDesktopAlertColor.Green, eAlertPosition.BottomRight);
+            }
+            else
+            {
+                db.Products.Add(new Product
+                {
+                    Name = txtName.Text.Trim(),
+                    Price = price,
+                    Profit = profit
+                });
+
+                DesktopAlert.Show("محصول ثبت شد", eDesktopAlertColor.Green, eAlertPosition.BottomRight);
+            }
 
             db.SaveChanges();
             DialogResult = DialogResult.OK;
-            DesktopAlert.Show("محصول ثبت شد", eDesktopAlertColor.Green, eAlertPosition.BottomRight);
+            
             Close();
+        }
+
+        private void ProductAddForm_Load(object sender, EventArgs e)
+        {
+            if (EditMode)
+            {
+                var db = new shampazEntities();
+                var p = db.Products.Where(x => x.Id == ProductId).FirstOrDefault();
+                txtName.Text = p.Name;
+                txtPrice.Text = p.Price.ToString();
+                txtProfit.Text = p.Profit.ToString();
+            }
         }
     }
 }

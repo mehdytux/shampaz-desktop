@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,13 +40,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>none</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Shampaz.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>shampaz.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.Charts.Design, Version=12.8.0.8, Culture=neutral, PublicKeyToken=90f470f34c89ccaf, processorArchitecture=MSIL" />
@@ -41,6 +65,27 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="PersianDatePickerControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PersianDatePickerWindowsFrom.3.0.1\lib\PersianDatePickerControl.dll</HintPath>
@@ -62,11 +107,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyFactor.cs">
+      <DependentUpon>ShampazModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BuyFactorItem.cs">
+      <DependentUpon>ShampazModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>ShampazModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAddFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAddFrom.Designer.cs">
+      <DependentUpon>PersonAddFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonsForm.Designer.cs">
+      <DependentUpon>PersonsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonBuysAggregationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonBuysAggregationForm.Designer.cs">
+      <DependentUpon>PersonBuysAggregationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>ShampazModel.tt</DependentUpon>
@@ -85,6 +157,31 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportRow.cs" />
+    <Compile Include="PersonsSalesAggregationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonsSalesAggregationForm.Designer.cs">
+      <DependentUpon>PersonsSalesAggregationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuyFactorAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyFactorAddForm.Designer.cs">
+      <DependentUpon>BuyFactorAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsBuysAggregationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsBuysAggregationForm.Designer.cs">
+      <DependentUpon>ProductsBuysAggregationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsSalesSumProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsSalesSumProfitForm.Designer.cs">
+      <DependentUpon>ProductsSalesSumProfitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SellFactor.cs">
       <DependentUpon>ShampazModel.tt</DependentUpon>
     </Compile>
@@ -96,6 +193,45 @@
     </Compile>
     <Compile Include="SellFactorItem.cs">
       <DependentUpon>ShampazModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellFactorKitchenReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFactorKitchenReportForm.Designer.cs">
+      <DependentUpon>SellFactorKitchenReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesAggregationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesAggregationForm.Designer.cs">
+      <DependentUpon>SalesAggregationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuyFactorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyFactorList.Designer.cs">
+      <DependentUpon>BuyFactorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellFactorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFactorList.Designer.cs">
+      <DependentUpon>SellFactorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellFactorPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFactorPrintForm.Designer.cs">
+      <DependentUpon>SellFactorPrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellFactorReportData.cs" />
+    <Compile Include="SellFactorReportDataSet.cs">
+      <DependentUpon>SellFactorReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SellFactorReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SellFactorReportDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ShampazModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -112,8 +248,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShampazModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ShampazModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAddFrom.resx">
+      <DependentUpon>PersonAddFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonsForm.resx">
+      <DependentUpon>PersonsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonBuysAggregationForm.resx">
+      <DependentUpon>PersonBuysAggregationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductAddForm.resx">
       <DependentUpon>ProductAddForm.cs</DependentUpon>
@@ -131,10 +280,42 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PersonsSalesAggregationForm.resx">
+      <DependentUpon>PersonsSalesAggregationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyFactorAddForm.resx">
+      <DependentUpon>BuyFactorAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsBuysAggregationForm.resx">
+      <DependentUpon>ProductsBuysAggregationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsSalesSumProfitForm.resx">
+      <DependentUpon>ProductsSalesSumProfitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SellFactorForm.resx">
       <DependentUpon>SellFactorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorKitchenReportForm.resx">
+      <DependentUpon>SellFactorKitchenReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesAggregationForm.resx">
+      <DependentUpon>SalesAggregationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyFactorList.resx">
+      <DependentUpon>BuyFactorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorList.resx">
+      <DependentUpon>SellFactorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorPrintForm.resx">
+      <DependentUpon>SellFactorPrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorKitchenReport.rdlc" />
+    <EmbeddedResource Include="SellFactorReport.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SellFactor.datasource" />
+    <None Include="Properties\DataSources\SellFactorItem.datasource" />
+    <None Include="Properties\DataSources\SellFactorReportData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +325,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SellFactorReportDataSet.xsc">
+      <DependentUpon>SellFactorReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SellFactorReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SellFactorReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SellFactorReportDataSet.xss">
+      <DependentUpon>SellFactorReportDataSet.xsd</DependentUpon>
+    </None>
     <EntityDeploy Include="ShampazModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShampazModel.Designer.cs</LastGenOutput>
@@ -165,19 +357,66 @@
     <None Include="Resources\product-24.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\postman-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-16.png" />
+    <None Include="Resources\digital-signature-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-report-32.png" />
+    <None Include="Resources\sales-report-32.png" />
+    <None Include="Resources\persons-32.png" />
+    <None Include="Resources\invoice-32.png" />
+    <None Include="Resources\shopping-cart-32.png" />
+    <None Include="Resources\digital-signature-16.png" />
+    <None Include="Resources\shopping-cart-16.png" />
+    <None Include="Resources\container-32.png" />
+    <None Include="Resources\postman-321.png" />
+    <None Include="Resources\checklist-32.png" />
+    <None Include="Resources\weight-32.png" />
+    <Content Include="shampaz.ico" />
     <Content Include="ShampazModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ShampazModel.Context.cs</LastGenOutput>
       <DependentUpon>ShampazModel.edmx</DependentUpon>
+      <LastGenOutput>ShampazModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ShampazModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShampazModel.edmx</DependentUpon>
       <LastGenOutput>ShampazModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,8 +25,12 @@ namespace Shampaz
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BuyFactor> BuyFactors { get; set; }
+        public virtual DbSet<BuyFactorItem> BuyFactorItems { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SellFactor> SellFactors { get; set; }
         public virtual DbSet<SellFactorItem> SellFactorItems { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

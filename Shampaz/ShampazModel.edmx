@@ -5,6 +5,38 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="shampazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyFactor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="PersonId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PaymentPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BuyFactorItem">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="BuyFactorId" />
+          </Key>
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BuyFactorId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +44,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Profit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="SellFactor">
           <Key>
@@ -20,12 +53,14 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="PersonId" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="SellFactorItem">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="SellFactorId" />
           </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="bigint" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -33,6 +68,64 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="SellFactorId" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_BuyFactor_PersonId">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="BuyFactor" Type="Self.BuyFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyFactorItem_BuyFactorId">
+          <End Role="BuyFactor" Type="Self.BuyFactor" Multiplicity="1" />
+          <End Role="BuyFactorItem" Type="Self.BuyFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyFactor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactorItem">
+              <PropertyRef Name="BuyFactorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyFactorItem_ProductId">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BuyFactorItem" Type="Self.BuyFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactorItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellFactor_PersonId">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="SellFactor" Type="Self.SellFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellFactor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SellFactorItem_ProductId">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="SellFactorItem" Type="Self.SellFactorItem" Multiplicity="*" />
@@ -45,12 +138,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SellFactorItem_SellFactorId">
+          <End Role="SellFactor" Type="Self.SellFactor" Multiplicity="1" />
+          <End Role="SellFactorItem" Type="Self.SellFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellFactor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellFactorItem">
+              <PropertyRef Name="SellFactorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="shampazModelStoreContainer">
+          <EntitySet Name="BuyFactor" EntityType="Self.BuyFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuyFactorItem" EntityType="Self.BuyFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellFactor" EntityType="Self.SellFactor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellFactorItem" EntityType="Self.SellFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BuyFactor_PersonId" Association="Self.FK_BuyFactor_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="BuyFactor" EntitySet="BuyFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyFactorItem_BuyFactorId" Association="Self.FK_BuyFactorItem_BuyFactorId">
+            <End Role="BuyFactor" EntitySet="BuyFactor" />
+            <End Role="BuyFactorItem" EntitySet="BuyFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyFactorItem_ProductId" Association="Self.FK_BuyFactorItem_ProductId">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BuyFactorItem" EntitySet="BuyFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellFactor_PersonId" Association="Self.FK_SellFactor_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="SellFactor" EntitySet="SellFactor" />
+          </AssociationSet>
           <AssociationSet Name="FK_SellFactorItem_ProductId" Association="Self.FK_SellFactorItem_ProductId">
             <End Role="Product" EntitySet="Product" />
+            <End Role="SellFactorItem" EntitySet="SellFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellFactorItem_SellFactorId" Association="Self.FK_SellFactorItem_SellFactorId">
+            <End Role="SellFactor" EntitySet="SellFactor" />
             <End Role="SellFactorItem" EntitySet="SellFactorItem" />
           </AssociationSet>
         </EntityContainer>
@@ -59,6 +188,44 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="shampazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuyFactor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonId" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_BuyFactor_PersonId" FromRole="BuyFactor" ToRole="Persons" />
+          <NavigationProperty Name="BuyFactorItems" Relationship="Self.FK_BuyFactorItem_BuyFactorId" FromRole="BuyFactor" ToRole="BuyFactorItem" />
+        </EntityType>
+        <EntityType Name="BuyFactorItem">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="BuyFactorId" />
+          </Key>
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BuyFactorId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BuyFactor" Relationship="Self.FK_BuyFactorItem_BuyFactorId" FromRole="BuyFactorItem" ToRole="BuyFactor" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_BuyFactorItem_ProductId" FromRole="BuyFactorItem" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuyFactors" Relationship="Self.FK_BuyFactor_PersonId" FromRole="Persons" ToRole="BuyFactor" />
+          <NavigationProperty Name="SellFactors" Relationship="Self.FK_SellFactor_PersonId" FromRole="Persons" ToRole="SellFactor" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -66,6 +233,8 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Profit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="BuyFactorItems" Relationship="Self.FK_BuyFactorItem_ProductId" FromRole="Product" ToRole="BuyFactorItem" />
           <NavigationProperty Name="SellFactorItems" Relationship="Self.FK_SellFactorItem_ProductId" FromRole="Product" ToRole="SellFactorItem" />
         </EntityType>
         <EntityType Name="SellFactor">
@@ -75,12 +244,16 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonId" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_SellFactor_PersonId" FromRole="SellFactor" ToRole="Persons" />
+          <NavigationProperty Name="SellFactorItems" Relationship="Self.FK_SellFactorItem_SellFactorId" FromRole="SellFactor" ToRole="SellFactorItem" />
         </EntityType>
         <EntityType Name="SellFactorItem">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="SellFactorId" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int64" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -88,7 +261,66 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SellFactorId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_SellFactorItem_ProductId" FromRole="SellFactorItem" ToRole="Product" />
+          <NavigationProperty Name="SellFactor" Relationship="Self.FK_SellFactorItem_SellFactorId" FromRole="SellFactorItem" ToRole="SellFactor" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BuyFactor_PersonId">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="BuyFactor" Type="Self.BuyFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyFactorItem_BuyFactorId">
+          <End Role="BuyFactor" Type="Self.BuyFactor" Multiplicity="1" />
+          <End Role="BuyFactorItem" Type="Self.BuyFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyFactor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactorItem">
+              <PropertyRef Name="BuyFactorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuyFactorItem_ProductId">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BuyFactorItem" Type="Self.BuyFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuyFactorItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellFactor_PersonId">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="SellFactor" Type="Self.SellFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellFactor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SellFactorItem_ProductId">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="SellFactorItem" Type="Self.SellFactorItem" Multiplicity="*" />
@@ -101,12 +333,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SellFactorItem_SellFactorId">
+          <End Role="SellFactor" Type="Self.SellFactor" Multiplicity="1" />
+          <End Role="SellFactorItem" Type="Self.SellFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellFactor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SellFactorItem">
+              <PropertyRef Name="SellFactorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="shampazEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyFactors" EntityType="Self.BuyFactor" />
+          <EntitySet Name="BuyFactorItems" EntityType="Self.BuyFactorItem" />
+          <EntitySet Name="Persons" EntityType="Self.Person" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="SellFactors" EntityType="Self.SellFactor" />
           <EntitySet Name="SellFactorItems" EntityType="Self.SellFactorItem" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_BuyFactor_PersonId" Association="Self.FK_BuyFactor_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="BuyFactor" EntitySet="BuyFactors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyFactorItem_BuyFactorId" Association="Self.FK_BuyFactorItem_BuyFactorId">
+            <End Role="BuyFactor" EntitySet="BuyFactors" />
+            <End Role="BuyFactorItem" EntitySet="BuyFactorItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuyFactorItem_ProductId" Association="Self.FK_BuyFactorItem_ProductId">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="BuyFactorItem" EntitySet="BuyFactorItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellFactor_PersonId" Association="Self.FK_SellFactor_PersonId">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="SellFactor" EntitySet="SellFactors" />
+          </AssociationSet>
           <AssociationSet Name="FK_SellFactorItem_ProductId" Association="Self.FK_SellFactorItem_ProductId">
             <End Role="Product" EntitySet="Products" />
+            <End Role="SellFactorItem" EntitySet="SellFactorItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellFactorItem_SellFactorId" Association="Self.FK_SellFactorItem_SellFactorId">
+            <End Role="SellFactor" EntitySet="SellFactors" />
             <End Role="SellFactorItem" EntitySet="SellFactorItems" />
           </AssociationSet>
         </EntityContainer>
@@ -116,12 +384,47 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="shampazModelStoreContainer" CdmEntityContainer="shampazEntities">
+          <EntitySetMapping Name="BuyFactors">
+            <EntityTypeMapping TypeName="shampazModel.BuyFactor">
+              <MappingFragment StoreEntitySet="BuyFactor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PaymentPrice" ColumnName="PaymentPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuyFactorItems">
+            <EntityTypeMapping TypeName="shampazModel.BuyFactorItem">
+              <MappingFragment StoreEntitySet="BuyFactorItem">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BuyFactorId" ColumnName="BuyFactorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="shampazModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="shampazModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -131,19 +434,31 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SellFactorItems">
             <EntityTypeMapping TypeName="shampazModel.SellFactorItem">
               <MappingFragment StoreEntitySet="SellFactorItem">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="Numbers" ColumnName="Numbers" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SellFactorId" ColumnName="SellFactorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="shampazModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

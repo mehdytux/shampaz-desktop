@@ -14,8 +14,20 @@ namespace Shampaz
     
     public partial class SellFactor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SellFactor()
+        {
+            this.SellFactorItems = new HashSet<SellFactorItem>();
+        }
+    
         public long Id { get; set; }
         public decimal TotalPrice { get; set; }
         public System.DateTime Date { get; set; }
+        public long PersonId { get; set; }
+        public string Description { get; set; }
+    
+        public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SellFactorItem> SellFactorItems { get; set; }
     }
 }

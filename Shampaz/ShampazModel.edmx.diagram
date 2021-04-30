@@ -4,11 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="755c0e843a564e56aaa9ef781b9ef5a0" Name="Diagram1">
-        <EntityTypeShape EntityType="shampazModel.Product" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="shampazModel.SellFactor" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="shampazModel.SellFactorItem" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="99cd84e5fe304787bd01437d93b731ae" Name="Diagram1">
+        <EntityTypeShape EntityType="shampazModel.BuyFactor" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.BuyFactorItem" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.Person" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.Product" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.SellFactor" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.SellFactorItem" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shampazModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="shampazModel.FK_BuyFactor_PersonId" ManuallyRouted="false" />
+        <AssociationConnector Association="shampazModel.FK_BuyFactorItem_BuyFactorId" ManuallyRouted="false" />
+        <AssociationConnector Association="shampazModel.FK_BuyFactorItem_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="shampazModel.FK_SellFactor_PersonId" ManuallyRouted="false" />
         <AssociationConnector Association="shampazModel.FK_SellFactorItem_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="shampazModel.FK_SellFactorItem_SellFactorId" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

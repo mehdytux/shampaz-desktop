@@ -17,13 +17,17 @@ namespace Shampaz
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.BuyFactorItems = new HashSet<BuyFactorItem>();
             this.SellFactorItems = new HashSet<SellFactorItem>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public decimal Profit { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BuyFactorItem> BuyFactorItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SellFactorItem> SellFactorItems { get; set; }
     }
