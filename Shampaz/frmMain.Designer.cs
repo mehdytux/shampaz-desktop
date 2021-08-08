@@ -36,6 +36,7 @@
             this.btnFactorsList = new DevComponents.DotNetBar.ButtonItem();
             this.btnProductsSalesAggregation = new DevComponents.DotNetBar.ButtonItem();
             this.btnPersonsSalesAggregation = new DevComponents.DotNetBar.ButtonItem();
+            this.btnSellFactorsReport = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar4 = new DevComponents.DotNetBar.RibbonBar();
             this.btnBuyFactorsList = new DevComponents.DotNetBar.ButtonItem();
             this.btnProductsBuysAggregation = new DevComponents.DotNetBar.ButtonItem();
@@ -171,11 +172,12 @@
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnFactorsList,
             this.btnProductsSalesAggregation,
-            this.btnPersonsSalesAggregation});
+            this.btnPersonsSalesAggregation,
+            this.btnSellFactorsReport});
             this.ribbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar2.Location = new System.Drawing.Point(252, 0);
+            this.ribbonBar2.Location = new System.Drawing.Point(146, 0);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(215, 95);
+            this.ribbonBar2.Size = new System.Drawing.Size(321, 95);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 2;
             this.ribbonBar2.Text = "فروش";
@@ -215,6 +217,13 @@
             this.btnPersonsSalesAggregation.SubItemsExpandWidth = 14;
             this.btnPersonsSalesAggregation.Text = "تجمیع فروش اشخاص";
             this.btnPersonsSalesAggregation.Click += new System.EventHandler(this.btnPersonsSalesAggregation_Click_1);
+            // 
+            // btnSellFactorsReport
+            // 
+            this.btnSellFactorsReport.Name = "btnSellFactorsReport";
+            this.btnSellFactorsReport.SubItemsExpandWidth = 14;
+            this.btnSellFactorsReport.Text = "تجمیع فروش تاریخ";
+            this.btnSellFactorsReport.Click += new System.EventHandler(this.btnSellFactorsReport_Click);
             // 
             // ribbonBar4
             // 
@@ -819,6 +828,7 @@
         private DevComponents.DotNetBar.ButtonItem btnPersonsSalesAggregation;
         private DevComponents.DotNetBar.RibbonBar ribbonBar5;
         private DevComponents.DotNetBar.ButtonItem btnProductsSaleSumProfit;
+        private DevComponents.DotNetBar.ButtonItem btnSellFactorsReport;
     }
 }
 

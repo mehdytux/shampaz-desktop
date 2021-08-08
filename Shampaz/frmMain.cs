@@ -119,5 +119,10 @@ namespace Shampaz
         {
             new ProductsSalesSumProfitForm().ShowDialog();
         }
+
+        private void btnSellFactorsReport_Click(object sender, EventArgs e)
+        {
+            new SellFactorsReports().ShowDialog();
+        }
     }
 }

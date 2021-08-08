@@ -17,12 +17,13 @@ namespace Shampaz
         public SellFactorList()
         {
             InitializeComponent();
+
+            pDateFrom.GeorgianDate = DateTime.Now;
+            pDateTo.GeorgianDate = DateTime.Now;
         }
 
         private void SellFactorList_Load(object sender, EventArgs e)
         {
-            pDateFrom.GeorgianDate = DateTime.Now;
-            pDateTo.GeorgianDate = DateTime.Now;
             dgvFactorsRefresh();
         }
 

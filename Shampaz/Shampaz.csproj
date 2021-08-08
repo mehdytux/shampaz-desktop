@@ -212,6 +212,12 @@
     <Compile Include="BuyFactorList.Designer.cs">
       <DependentUpon>BuyFactorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="SellFactorsReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFactorsReports.Designer.cs">
+      <DependentUpon>SellFactorsReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="SellFactorList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BuyFactorList.resx">
       <DependentUpon>BuyFactorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorsReports.resx">
+      <DependentUpon>SellFactorsReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SellFactorList.resx">
       <DependentUpon>SellFactorList.cs</DependentUpon>
