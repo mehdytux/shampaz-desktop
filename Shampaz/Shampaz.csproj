@@ -12,8 +12,9 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
+    <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -25,7 +26,6 @@
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -194,6 +194,12 @@
     <Compile Include="SellFactorItem.cs">
       <DependentUpon>ShampazModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SellFactorNobatReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellFactorNobatReportForm.Designer.cs">
+      <DependentUpon>SellFactorNobatReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SellFactorKitchenReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SellFactorForm.resx">
       <DependentUpon>SellFactorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellFactorNobatReport.rdlc" />
+    <EmbeddedResource Include="SellFactorNobatReportForm.resx">
+      <DependentUpon>SellFactorNobatReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SellFactorKitchenReportForm.resx">
       <DependentUpon>SellFactorKitchenReportForm.cs</DependentUpon>

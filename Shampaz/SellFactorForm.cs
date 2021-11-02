@@ -49,6 +49,9 @@ namespace Shampaz
 
                 btnPrint.Enabled = true;
                 btnKitchenReceipt.Enabled = true;
+                btnNobat.Enabled = true;
+
+                lblTurn.Text = "نوبت : " + getTurn().ToString();
             }
 
             btnPerson.Text = SelectedPerson.Name;
@@ -183,6 +186,10 @@ namespace Shampaz
 
             btnPrint.Enabled = true;
             btnKitchenReceipt.Enabled = true;
+            btnNobat.Enabled = true;
+
+            lblTurn.Text = "نوبت : " + getTurn().ToString();
+            lblFactorId.Text = EditedSellFactor.Id.ToString();
         }
 
         private void save()
@@ -194,7 +201,7 @@ namespace Shampaz
                 Date = (DateTime)pdpDate.GeorgianDate + dtpTime.Value.TimeOfDay,
                 PersonId = SelectedPerson.Id,
                 TotalPrice = Convert.ToDecimal(txtTotalPrice.Text),
-                Description = txtDescription.Text
+                Description = txtDescription.Text,
             };
 
             db.SellFactors.Add(factor);
@@ -313,6 +320,20 @@ namespace Shampaz
             }
 
             calculateAndSetTotalPrice();
+        }
+
+        private void btnNobat_Click(object sender, EventArgs e)
+        {
+            int turn = getTurn();
+            var form = new SellFactorNobatReportForm(turn);
+            form.ShowDialog();
+        }
+
+        private int getTurn()
+        {
+            var db = new shampazEntities();
+            DateTime to = pdpDate.GeorgianDate.Value + new TimeSpan(23, 59, 59);
+            return db.SellFactors.Where(x => x.Date >= pdpDate.GeorgianDate && x.Date <= to && x.Id <= EditedSellFactor.Id).Count();
         }
     }
 }

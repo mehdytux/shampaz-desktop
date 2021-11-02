@@ -55,6 +55,8 @@
             this.btnProductRemove = new DevComponents.DotNetBar.ButtonX();
             this.lblPriceDiff = new System.Windows.Forms.Label();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
+            this.lblTurn = new DevComponents.DotNetBar.LabelX();
+            this.btnNobat = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +67,7 @@
             this.pdpDate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pdpDate.BackColor = System.Drawing.Color.White;
             this.pdpDate.GeorgianDate = null;
-            this.pdpDate.Location = new System.Drawing.Point(286, 11);
+            this.pdpDate.Location = new System.Drawing.Point(429, 11);
             this.pdpDate.Margin = new System.Windows.Forms.Padding(0);
             this.pdpDate.Name = "pdpDate";
             this.pdpDate.PersianDate.Day = 0;
@@ -106,7 +108,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvItems.EnableHeadersVisualStyles = false;
-            this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvItems.Location = new System.Drawing.Point(12, 48);
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -119,7 +121,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(816, 337);
+            this.dgvItems.Size = new System.Drawing.Size(959, 337);
             this.dgvItems.TabIndex = 1;
             this.dgvItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellEndEdit);
             // 
@@ -161,7 +163,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(768, 10);
+            this.labelX1.Location = new System.Drawing.Point(911, 10);
             this.labelX1.Name = "labelX1";
             this.labelX1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelX1.Size = new System.Drawing.Size(60, 23);
@@ -175,7 +177,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(64, 10);
+            this.labelX2.Location = new System.Drawing.Point(207, 10);
             this.labelX2.Name = "labelX2";
             this.labelX2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelX2.Size = new System.Drawing.Size(92, 23);
@@ -189,7 +191,7 @@
             // 
             // 
             this.lblFactorId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblFactorId.Location = new System.Drawing.Point(12, 12);
+            this.lblFactorId.Location = new System.Drawing.Point(155, 12);
             this.lblFactorId.Name = "lblFactorId";
             this.lblFactorId.Size = new System.Drawing.Size(57, 23);
             this.lblFactorId.TabIndex = 7;
@@ -200,7 +202,7 @@
             this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPerson.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPerson.Image = global::Shampaz.Properties.Resources.search_16;
-            this.btnPerson.Location = new System.Drawing.Point(611, 10);
+            this.btnPerson.Location = new System.Drawing.Point(754, 10);
             this.btnPerson.Name = "btnPerson";
             this.btnPerson.Size = new System.Drawing.Size(151, 23);
             this.btnPerson.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -241,7 +243,7 @@
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(750, 480);
+            this.btnSave.Location = new System.Drawing.Point(893, 480);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -257,7 +259,7 @@
             // 
             this.txtDescription.Border.Class = "TextBoxBorder";
             this.txtDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDescription.Location = new System.Drawing.Point(296, 392);
+            this.txtDescription.Location = new System.Drawing.Point(439, 392);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PreventEnterBeep = true;
@@ -271,7 +273,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(768, 391);
+            this.labelX4.Location = new System.Drawing.Point(911, 391);
             this.labelX4.Name = "labelX4";
             this.labelX4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelX4.Size = new System.Drawing.Size(60, 23);
@@ -296,7 +298,7 @@
             this.btnSaveAndClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSaveAndClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveAndClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSaveAndClose.Location = new System.Drawing.Point(637, 480);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(780, 480);
             this.btnSaveAndClose.Name = "btnSaveAndClose";
             this.btnSaveAndClose.Size = new System.Drawing.Size(107, 23);
             this.btnSaveAndClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -310,7 +312,7 @@
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(443, 480);
+            this.btnPrint.Location = new System.Drawing.Point(586, 480);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -337,7 +339,7 @@
             this.btnSaveAndNew.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSaveAndNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveAndNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSaveAndNew.Location = new System.Drawing.Point(524, 480);
+            this.btnSaveAndNew.Location = new System.Drawing.Point(667, 480);
             this.btnSaveAndNew.Name = "btnSaveAndNew";
             this.btnSaveAndNew.Size = new System.Drawing.Size(107, 23);
             this.btnSaveAndNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -371,17 +373,48 @@
             this.dtpTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTime.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(170, 12);
+            this.dtpTime.Location = new System.Drawing.Point(313, 12);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(113, 23);
             this.dtpTime.TabIndex = 22;
             // 
+            // lblTurn
+            // 
+            this.lblTurn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblTurn.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblTurn.Location = new System.Drawing.Point(12, 10);
+            this.lblTurn.Name = "lblTurn";
+            this.lblTurn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblTurn.Size = new System.Drawing.Size(137, 23);
+            this.lblTurn.TabIndex = 23;
+            this.lblTurn.Text = "نوبت : ";
+            // 
+            // btnNobat
+            // 
+            this.btnNobat.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNobat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNobat.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNobat.Enabled = false;
+            this.btnNobat.Location = new System.Drawing.Point(139, 480);
+            this.btnNobat.Name = "btnNobat";
+            this.btnNobat.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2);
+            this.btnNobat.Size = new System.Drawing.Size(120, 23);
+            this.btnNobat.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnNobat.TabIndex = 24;
+            this.btnNobat.Text = "چاپ نوبت";
+            this.btnNobat.Click += new System.EventHandler(this.btnNobat_Click);
+            // 
             // SellFactorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 517);
+            this.ClientSize = new System.Drawing.Size(980, 517);
+            this.Controls.Add(this.btnNobat);
+            this.Controls.Add(this.lblTurn);
             this.Controls.Add(this.dtpTime);
             this.Controls.Add(this.lblPriceDiff);
             this.Controls.Add(this.btnProductRemove);
@@ -443,5 +476,7 @@
         private DevComponents.DotNetBar.ButtonX btnProductRemove;
         private System.Windows.Forms.Label lblPriceDiff;
         private System.Windows.Forms.DateTimePicker dtpTime;
+        private DevComponents.DotNetBar.LabelX lblTurn;
+        private DevComponents.DotNetBar.ButtonX btnNobat;
     }
 }
